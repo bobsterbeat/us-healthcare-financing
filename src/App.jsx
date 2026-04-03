@@ -250,7 +250,174 @@ function HowHospitalsGetPaid() {
       <TB>
         <P style={{ fontSize: "0.82rem", color: "#64748b", fontStyle: "italic" }}>Data source: UC Davis Health Charge Description Master (CDM), published June 2025. "Pharmacy / Real Cost" column reflects approximate wholesale acquisition cost (WAC) or cash-pay pricing at retail pharmacies and independent imaging centers for comparison. Chargemaster prices are required to be published under CMS price transparency rules (45 CFR §180.50). These are standard academic medical center charges and are comparable to other US teaching hospitals.</P>
       </TB>
-      <SH>Where $5.3 Trillion Goes</SH>
+
+      <SH>Operating Room Charges: The Most Expensive Room in America</SH>
+      <Sub>UC Davis OR charges by complexity level (June 2025 CDM)</Sub>
+      <TB>
+        <P>Operating room time is billed separately from surgeon fees, anesthesia fees, supplies, implants, and drugs. The OR charge is the hospital's "facility fee" for the room itself — nursing staff, equipment, overhead, sterile processing, and infrastructure. UC Davis uses a 10-level system based on case complexity:</P>
+      </TB>
+
+      <div style={{ overflowX: "auto" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.85rem" }}>
+          <thead><tr>
+            <th style={{ textAlign: "left", fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: 1.5, color: "#64748b", fontWeight: 600, padding: "11px 12px", borderBottom: "1px solid rgba(148,163,184,0.25)" }}>OR Level</th>
+            <th style={{ textAlign: "right", fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: 1.5, color: "#f87171", fontWeight: 600, padding: "11px 12px", borderBottom: "1px solid rgba(148,163,184,0.25)" }}>First Hour</th>
+            <th style={{ textAlign: "right", fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: 1.5, color: "#fbbf24", fontWeight: 600, padding: "11px 12px", borderBottom: "1px solid rgba(148,163,184,0.25)" }}>Addl 30 min</th>
+            <th style={{ textAlign: "right", fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: 1.5, color: "#64748b", fontWeight: 600, padding: "11px 12px", borderBottom: "1px solid rgba(148,163,184,0.25)" }}>3-Hour Case Total</th>
+          </tr></thead>
+          <tbody>
+            {[
+              { lvl: "Level 1 (minor)", hr1: "$4,877", add: "$1,438", total: "$10,629", ex: "e.g. simple skin excision" },
+              { lvl: "Level 2", hr1: "$8,377", add: "$3,997", total: "$24,365", ex: "e.g. carpal tunnel, simple scope" },
+              { lvl: "Level 3", hr1: "$12,076", add: "$5,450", total: "$33,875", ex: "e.g. lap chole, knee arthroscopy" },
+              { lvl: "Level 4", hr1: "$24,150", add: "$5,933", total: "$47,883", ex: "e.g. total joint, spine" },
+              { lvl: "Level 5", hr1: "$24,836", add: "$7,948", total: "$56,627", ex: "e.g. complex ortho, craniotomy" },
+              { lvl: "Level 6", hr1: "$25,588", add: "$9,829", total: "$64,903", ex: "e.g. major vascular, complex spine" },
+              { lvl: "Level 7–8", hr1: "$36,123", add: "$7,225", total: "$65,023", ex: "e.g. organ transplant, cardiac" },
+              { lvl: "Level 9", hr1: "$48,165", add: "$10,838", total: "$91,517", ex: "e.g. complex cardiac, multi-organ" },
+              { lvl: "Level 10 (most complex)", hr1: "$60,207", add: "$14,451", total: "$118,011", ex: "e.g. heart/lung transplant" },
+            ].map((r, i) => (
+              <tr key={i}>
+                <td style={{ padding: "9px 12px", borderBottom: "1px solid rgba(148,163,184,0.1)", color: "#f1f5f9", fontWeight: 500, fontSize: "0.84rem" }}>{r.lvl}<br/><span style={{ fontSize: "0.75rem", color: "#64748b", fontWeight: 400 }}>{r.ex}</span></td>
+                <td style={{ padding: "9px 12px", borderBottom: "1px solid rgba(148,163,184,0.1)", color: "#f87171", fontWeight: 600, textAlign: "right", fontSize: "0.84rem" }}>{r.hr1}</td>
+                <td style={{ padding: "9px 12px", borderBottom: "1px solid rgba(148,163,184,0.1)", color: "#fbbf24", textAlign: "right", fontSize: "0.84rem" }}>{r.add}</td>
+                <td style={{ padding: "9px 12px", borderBottom: "1px solid rgba(148,163,184,0.1)", color: "#94a3b8", textAlign: "right", fontSize: "0.84rem" }}>{r.total}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <TB>
+        <P>These are OR facility charges only. For a 3-hour Level 4 total knee replacement, the chargemaster OR facility charge alone is ~$48,000. Add to that: surgeon's professional fee (~$1,500–3,000 Medicare, higher for private insurance), anesthesia charges (general anesthesia first hour $7,194 + $1,658 per additional 15 min = ~$14,000 for 3 hours), implant costs ($8,000–25,000 for the prosthesis), drugs, labs, PACU recovery ($4,000–5,000), and one night in a hospital bed ($7,287). The total chargemaster charge for a straightforward TKA can easily exceed $100,000. Medicare pays a flat DRG rate of ~$12,000–18,000 for the entire episode.</P>
+      </TB>
+
+      <SH>Anesthesia Charges</SH>
+      <Sub>UC Davis anesthesia facility charges (separate from physician/CRNA professional fees)</Sub>
+
+      <div style={{ overflowX: "auto" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.85rem" }}>
+          <thead><tr>
+            <th style={{ textAlign: "left", fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: 1.5, color: "#64748b", fontWeight: 600, padding: "11px 12px", borderBottom: "1px solid rgba(148,163,184,0.25)" }}>Anesthesia Type</th>
+            <th style={{ textAlign: "right", fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: 1.5, color: "#64748b", fontWeight: 600, padding: "11px 12px", borderBottom: "1px solid rgba(148,163,184,0.25)" }}>First Hour</th>
+            <th style={{ textAlign: "right", fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: 1.5, color: "#64748b", fontWeight: 600, padding: "11px 12px", borderBottom: "1px solid rgba(148,163,184,0.25)" }}>Each Addl 15 min</th>
+          </tr></thead>
+          <tbody>
+            {[
+              ["Major general anesthesia", "$10,053", "$2,156"],
+              ["General anesthesia", "$7,194", "$1,658"],
+              ["Regional anesthesia", "$4,144", "$1,149"],
+              ["Moderate sedation (same provider)", "$1,197–1,341", "$605"],
+              ["Moderate sedation (separate provider)", "$571–633", "$286–344"],
+            ].map((r, i) => (
+              <tr key={i}>{r.map((c, j) => <td key={j} style={{ padding: "9px 12px", borderBottom: "1px solid rgba(148,163,184,0.1)", color: j === 0 ? "#f1f5f9" : "#94a3b8", fontWeight: j === 0 ? 500 : 400, textAlign: j === 0 ? "left" : "right", fontSize: "0.84rem" }}>{c}</td>)}</tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <Divider />
+
+      <SH>The Fee Structure: Facility vs Professional</SH>
+      <Sub>Why the same knee scope generates 3–5 separate bills</Sub>
+      <TB>
+        <P>In the NHS, a procedure has one cost — the national tariff. In the US, a single surgical episode generates multiple separate charges billed by different entities:</P>
+      </TB>
+
+      <FeatureCards cards={[
+        { icon: "🏥", title: "Facility Fee (Hospital)", titleColor: "#f87171", body: "The hospital charges for the OR, PACU, nursing staff, supplies, equipment, and overhead. This is the OR Level charge above. Billed under the hospital's NPI/tax ID. For inpatients, this is bundled into the DRG (Medicare) or per-diem (some insurers). For outpatients, it's billed per CPT code as a separate facility fee. This is the charge that differs most between settings." },
+        { icon: "🩺", title: "Professional Fee (Surgeon)", titleColor: "#60a5fa", body: "The surgeon bills separately for their professional services — the operation itself. Billed under the surgeon's personal NPI. Medicare pays based on the Physician Fee Schedule (RBRVS × Geographic Practice Cost Index × Conversion Factor). For a total knee, the surgeon's Medicare professional fee is ~$1,500. Private insurers pay 150–300% of Medicare." },
+        { icon: "💉", title: "Professional Fee (Anesthesia)", titleColor: "#4ade80", body: "Anesthesia is billed separately using base units (complexity of procedure) + time units (1 unit per 15 minutes). Medicare conversion factor: ~$22–23/unit. A 3-hour total knee = ~12 base + 12 time = 24 units × $22 = ~$528 Medicare professional fee. Private insurers pay $80–120/unit = $1,920–2,880. The hospital's anesthesia facility charge (above) is on top of this." },
+        { icon: "📋", title: "Other Professional Fees", titleColor: "#fbbf24", body: "Pathology reads, radiology reads, and consulting physicians each bill separately under their own NPI. A surgical case with intraop X-ray, frozen section, and a pain consult generates three additional professional bills the patient never requested and may not have known about — a leading cause of 'surprise billing' before the No Surprises Act (2022)." },
+      ]} />
+
+      <SH>Site of Service: Why It Matters Enormously</SH>
+      <Sub>The same procedure, different settings, wildly different facility fees</Sub>
+      <TB>
+        <P>The facility fee is where the biggest pricing variation occurs — because it depends entirely on where the procedure is performed. The physician professional fee is the same regardless of setting (same CPT code, same RVU), but the facility component can vary by 3–5× for the identical procedure:</P>
+      </TB>
+
+      <div style={{ overflowX: "auto" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.85rem" }}>
+          <thead><tr>
+            <th style={{ textAlign: "left", fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: 1.5, color: "#64748b", fontWeight: 600, padding: "11px 12px", borderBottom: "1px solid rgba(148,163,184,0.25)" }}>Setting</th>
+            <th style={{ textAlign: "left", fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: 1.5, color: "#64748b", fontWeight: 600, padding: "11px 12px", borderBottom: "1px solid rgba(148,163,184,0.25)" }}>Facility Fee Model</th>
+            <th style={{ textAlign: "center", fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: 1.5, color: "#64748b", fontWeight: 600, padding: "11px 12px", borderBottom: "1px solid rgba(148,163,184,0.25)" }}>Relative Cost</th>
+            <th style={{ textAlign: "left", fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: 1.5, color: "#64748b", fontWeight: 600, padding: "11px 12px", borderBottom: "1px solid rgba(148,163,184,0.25)" }}>Key Difference</th>
+          </tr></thead>
+          <tbody>
+            {[
+              ["Hospital Inpatient", "DRG (Medicare) — flat per-episode", "💰💰💰💰", "Highest total cost. DRG covers everything: OR, room, drugs, supplies. Hospital keeps margin if efficient, loses if not."],
+              ["Hospital Outpatient (HOPD)", "APC (Ambulatory Payment Classification)", "💰💰💰", "Medicare pays ~65–85% of inpatient. But hospital can also charge the OPPS facility fee — often 2–3× what an ASC receives for the same procedure."],
+              ["Off-campus HOPD", "APC (reduced rate since 2019)", "💰💰½", "CMS cut rates for off-campus HOPDs created after 2015 (Section 603). Existing grandfathered sites keep higher rates. This is why hospitals rushed to open off-campus sites before the deadline."],
+              ["ASC (Ambulatory Surgery Center)", "ASC fee schedule", "💰💰", "Medicare pays ~55–65% of HOPD rates. Lower overhead, no ER cross-subsidy. Physician-owners capture the facility margin. ~6,100 ASCs nationally, handling ~70% of outpatient surgery."],
+              ["Physician Office", "No facility fee (non-facility rate)", "💰", "Lowest total cost. Physician bills a higher 'non-facility' professional fee to cover their own overhead. No separate facility charge. Best economics for simple procedures."],
+            ].map((r, i) => (
+              <tr key={i}>{r.map((c, j) => <td key={j} style={{ padding: "10px 12px", borderBottom: "1px solid rgba(148,163,184,0.1)", color: j === 0 ? "#f1f5f9" : "#94a3b8", fontWeight: j === 0 ? 500 : 400, textAlign: j === 2 ? "center" : "left", fontSize: "0.84rem", verticalAlign: "top" }}>{c}</td>)}</tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <Callout><B>The site-of-service arbitrage:</B> A colonoscopy performed in a hospital outpatient department (HOPD) costs Medicare ~$1,383. The same colonoscopy at an ASC costs Medicare ~$806. In a physician's office (where feasible): even less. The clinical outcome is identical. This is why CMS has been shifting procedures to lower-cost settings — and why hospitals are fighting to keep them in HOPDs, where the facility fee is their margin. It's also why physician-owned ASCs are so profitable: they capture the facility fee that would otherwise go to the hospital, at lower overhead.</Callout>
+
+      <Callout type="teal"><BT>For the NHS clinician:</BT> None of this exists in the NHS. A consultant does a knee arthroscopy in an NHS operating theatre — one tariff, one payment, one institution. The idea that the same surgeon doing the same procedure would generate a different hospital payment depending on whether the room is classified as "hospital outpatient," "off-campus HOPD," or "ASC" — with the physician's professional fee identical across all three — is one of the most bewildering features of US healthcare economics. The entire site-of-service fee structure exists because the US chose to pay for healthcare by location rather than by outcome.</Callout>
+
+      <Divider />
+
+      <SH>APCs Explained: The Outpatient Equivalent of DRGs</SH>
+      <Sub>How Medicare pays for outpatient hospital services</Sub>
+      <TB>
+        <P>If DRGs are how Medicare pays for inpatient episodes, APCs (Ambulatory Payment Classifications) are the outpatient equivalent. Under the Hospital Outpatient Prospective Payment System (OPPS), every outpatient service — surgery, imaging, ED visit, clinic visit, infusion — is assigned to an APC group based on clinical similarity and resource use. Each APC has a relative weight, which is multiplied by a conversion factor (~$90–95 in 2026) and adjusted for geography to determine the payment.</P>
+        <P>The hospital receives this fixed APC payment regardless of what it actually spent. If the hospital's cost is lower than the APC payment, it profits. If higher, it loses. This is the same risk-transfer logic as DRGs, applied to outpatient care. The critical difference: while a DRG bundles an entire hospital stay into one payment, APCs are billed per service — a patient who gets an outpatient knee scope has separate APCs for the procedure, the anesthesia facility component, the recovery room, and any drugs or devices that aren't packaged into the primary APC. Comprehensive APCs (C-APCs) bundle more services together for complex procedures, moving closer to the DRG model.</P>
+        <P>For the hospital, APCs determine the facility fee for every outpatient encounter. The physician professional fee is billed separately under the Medicare Physician Fee Schedule and is unaffected by APCs. This is the fundamental split: APC = what the hospital gets; PFS = what the doctor gets.</P>
+      </TB>
+
+      <SH>The HOPD Strategy: Why Hospitals Build Off-Campus</SH>
+      <Sub>Provider-based billing and the economics of the 48X ambulatory complex</Sub>
+      <TB>
+        <P>Here's where it gets strategically interesting — and directly relevant to ambulatory surgery programme development. A hospital outpatient department (HOPD) receives APC payments under OPPS. An independent physician office or ASC does not. The APC facility fee for a given procedure in an HOPD can be 2–3× the ASC rate for the identical service. This payment differential is what drives the "provider-based" designation strategy.</P>
+        <P>When a hospital opens an off-campus clinic or ambulatory surgery facility and registers it as a "provider-based" department (a department of the main hospital, even though it's at a separate address), that facility bills under the hospital's Medicare provider number and receives HOPD/APC rates rather than office or ASC rates. The patient sees a freestanding building that looks like an ASC; Medicare sees a hospital outpatient department and pays accordingly.</P>
+        <P>However, CMS took notice. Section 603 of the Bipartisan Budget Act of 2015 stipulated that off-campus HOPDs created after November 2, 2015 would be paid at a reduced rate (roughly equivalent to the PFS non-facility rate) rather than the full OPPS/APC rate. Existing off-campus HOPDs were "grandfathered" and continue to receive full APC payments. This is why hospitals rushed to establish off-campus sites before the deadline — and why grandfathered off-campus HOPDs are enormously valuable assets.</P>
+        <P>New ambulatory complexes (like a 48X-designated HOPD facility) must navigate this landscape carefully. If the facility qualifies as an on-campus HOPD (within 250 yards of the main campus) or as an excepted off-campus HOPD (grandfathered pre-2015, or relocated under CMS relocation rules), it receives full APC rates. If it's a new non-excepted off-campus facility, the payment rates are substantially lower — though still potentially higher than ASC rates for certain procedures. The financial modelling for any new ambulatory complex hinges on this distinction.</P>
+      </TB>
+
+      <Callout><B>The practical impact:</B> For a total knee arthroplasty performed as an outpatient, the Medicare facility payment to an HOPD under APCs might be ~$12,000–15,000. The same procedure at an ASC pays ~$7,000–10,000. At a non-excepted off-campus HOPD, the payment falls somewhere in between. The surgeon's and anesthesiologist's professional fees are identical regardless of setting. The facility fee is where the money diverges — and it's the facility fee that pays for the building, the nurses, the equipment, and the overhead.</Callout>
+
+      <SH>Anesthesia Technique & Billing Economics</SH>
+      <Sub>Does the choice of GA vs spinal vs regional affect revenue? It's complicated.</Sub>
+      <TB>
+        <P>A common question from clinicians entering the US system: is there a financial incentive to choose general anesthesia over a spinal or regional technique? The answer involves multiple revenue streams that move in different directions.</P>
+      </TB>
+
+      <FeatureCards cards={[
+        { icon: "💰", title: "Professional Fee: Same Base Units", titleColor: "#4ade80", body: "The anesthesia professional fee (what the anesthesiologist or CRNA bills) uses the same CPT/ASA code regardless of technique. A total hip under GA, spinal, or combined spinal-epidural all bill under the same ASA code (01214) with the same base units (8). GA, spinal, regional, and TIVA are all reimbursed identically per time unit. The professional fee difference comes only from time: if GA takes 30 minutes longer than spinal, that's 2 extra time units billed." },
+        { icon: "🏥", title: "Hospital Facility Fee: Time Matters", titleColor: "#f87171", body: "The hospital's anesthesia facility charge (from the CDM: $7,194–10,053/first hour + $1,658–2,156/15 min) is time-based. A faster spinal technique that gets the patient in and out of the OR quicker generates less facility revenue than a longer GA case. But it also frees the OR for the next case — which may generate more total daily revenue through higher throughput. The optimal economics depend on case volume and OR utilisation." },
+        { icon: "💉", title: "Regional Blocks: Separately Billable", titleColor: "#60a5fa", body: "Here's where regional anesthesia creates additional revenue. A nerve block performed for postoperative analgesia (not as the primary surgical anesthetic) is billed as a separate CPT code with its own RVUs — completely separate from the anesthesia time-based billing. An adductor canal block for TKA pain (CPT 64447) generates ~1.48 work RVUs (~$55–65 Medicare professional fee). Under GA + nerve block, the anesthesia group bills the full GA time units PLUS the block CPT code. Under spinal alone, there's no additional block to bill." },
+        { icon: "⚖️", title: "The Real Calculus", titleColor: "#fbbf24", body: "GA + regional block typically generates the highest total anesthesia professional revenue (full time units + separate block CPT). Spinal-only generates less (shorter time, no separate block). But the surgeon may prefer spinal for clinical reasons (faster recovery, less PONV, same-day discharge for TKA). The hospital may prefer the technique that maximises OR throughput. The anesthesia group's financial incentive and the hospital's financial incentive don't always align — a tension unique to fee-for-service systems." },
+      ]} />
+
+      <TB>
+        <P>An important distinction on MAC vs local: Monitored Anesthesia Care is a billable anesthesia service — the anesthesiologist or CRNA is present, monitoring the patient, prepared to convert to GA if needed, and may administer sedation. MAC is billed with base + time units and the QS modifier. Some payers reimburse MAC at a lower rate or require qualifying diagnoses, but it is a legitimate anesthesia service generating professional revenue. The anesthesia group only loses the case entirely when the surgeon performs the procedure under local anesthesia alone with no anesthesia provider present — no monitoring, no sedation, no standby. In that scenario, there is no anesthesia bill at all. This creates the economic tension: surgeons who can comfortably work under local-only want to skip anesthesia involvement (faster start, no coordination); anesthesia groups argue for MAC or regional techniques that require their presence and expertise.</P>
+      </TB>
+
+      <SH>Who Gets the Bill? How Claims Flow</SH>
+      <Sub>The journey from OR to patient's mailbox</Sub>
+      <TB>
+        <P>A single surgical episode generates multiple separate claims from multiple billing entities. Here's the flow for a commercially insured patient having an outpatient total knee at an HOPD:</P>
+      </TB>
+
+      <FeatureCards cards={[
+        { icon: "1️⃣", title: "Hospital Facility Claim (UB-04)", titleColor: "#f87171", body: "The hospital submits a UB-04 institutional claim to the insurer. This includes: OR facility fee (by level and time), PACU charges, drugs, supplies, implant costs, labs, imaging, and room charges if the patient stays overnight. This is the largest single bill. For commercial insurance, the hospital's negotiated rate may be 150–300% of Medicare APC rates. The insurer pays its contracted share; the patient owes the deductible, copay, or coinsurance." },
+        { icon: "2️⃣", title: "Surgeon Professional Claim (CMS-1500)", titleColor: "#60a5fa", body: "The surgeon (or their group) submits a CMS-1500 professional claim. This covers the operation itself plus pre-op and post-op visits (included in the surgical global period — typically 90 days for major procedures). The insurer pays the negotiated rate for the surgical CPT code. The patient owes their professional-fee cost-sharing, which is separate from the facility cost-sharing." },
+        { icon: "3️⃣", title: "Anesthesia Professional Claim (CMS-1500)", titleColor: "#4ade80", body: "The anesthesia group submits a separate CMS-1500. Calculated as (base units + time units + modifiers) × contracted conversion factor. If a nerve block was performed for postop pain, it's an additional line item with its own CPT code. Medical direction modifiers (QK/QY for the anesthesiologist, QX for the CRNA) determine payment splits in a care team model." },
+        { icon: "4️⃣", title: "Other Professional Claims", titleColor: "#fbbf24", body: "Pathology reads, radiology reads, any intraop consultants — each submits their own CMS-1500. The patient may receive 5–7 separate bills for a single surgical episode, from entities they never directly interacted with. Before the No Surprises Act (2022), out-of-network professionals in an in-network hospital could balance-bill the patient for the difference — now prohibited for most emergency and scheduled facility-based services." },
+      ]} />
+
+      <TB>
+        <P>Are these charges negotiated? Yes — but not by the patient. The hospital has a contract with each insurer specifying rates (often expressed as a percentage of Medicare or chargemaster). The surgeon's group has its own contract. The anesthesia group has its own. Each negotiation is independent. A hospital might have excellent rates with UnitedHealthcare but poor rates with Aetna. The anesthesia group might be in-network with Blue Shield but out-of-network with Cigna. The patient navigating this has no visibility into any of it until the EOBs (Explanation of Benefits) arrive weeks later — typically 3–5 separate EOBs for a single surgery.</P>
+        <P>For Medicare patients, none of this applies — Medicare sets the rates (DRG/APC for facility, PFS for professional), the hospital and physicians accept assignment, and the patient owes their Part A deductible (inpatient) or Part B 20% coinsurance (outpatient). For Medicaid, the state sets even lower rates. For the uninsured: chargemaster prices, a financial counsellor visit, and — if they're lucky — a charity care application.</P>
+      </TB>
       <Sub>Spending by category of service (2024, billions)</Sub>
       <ChartBox title="Spending by Service Category" subtitle="Billions of dollars, 2024">
         <ResponsiveContainer width="100%" height={260}>
@@ -799,7 +966,7 @@ function WorkforceEconomics() {
       <SH>CRNAs: The Anesthesia Economics Case Study</SH>
       <Sub>A microcosm of the entire midlevel debate</Sub>
       <TB>
-        <P>CRNAs deliver over 58 million anesthetics annually in the US — more than half of all anesthesia care. There are 59,000+ CRNAs in practice, earning a mean of ~$232,000/year versus ~$428,000 for anesthesiologists. Medicare reimburses CRNA-only services at 85% of the physician fee schedule. The clinical safety data is clear: multiple large studies including a &gt;1 million obstetric patient analysis show comparable complication rates regardless of provider type.</P>
+        <P>CRNAs deliver over 58 million anesthetics annually in the US — more than half of all anesthesia care. There are 59,000+ CRNAs in practice, earning a mean of ~$232,000/year versus ~$428,000 for anesthesiologists. Medicare reimburses CRNA-only services at 85% of the physician fee schedule. The clinical safety data is clear: multiple large studies including a >1 million obstetric patient analysis show comparable complication rates regardless of provider type.</P>
         <P>The delivery models span a spectrum: CRNA-only (no physician involvement), medical direction (1 anesthesiologist directing up to 4 CRNAs — the "care team model"), supervision (1 anesthesiologist overseeing 4+ CRNAs with less direct involvement), and anesthesiologist-only. As of 2024, 25 states have opted out of the federal Medicare requirement for physician supervision of CRNAs, allowing fully independent practice.</P>
         <P>The economics are stark. A 5-FTE anesthesiologist group costs ~$550–620k per FTE (total compensation + benefits). A 5-FTE CRNA group costs ~$246–295k per FTE. Revenue per case is identical between provider types under fee-for-service billing (same CPT codes, same base + time units). The care team model splits the revenue: the anesthesiologist bills the medical direction component (QZ modifier), the CRNA bills the service component (QX modifier). Independent CRNA practice generates the same revenue at roughly half the labor cost.</P>
         <P>This is why hospitals and ASCs increasingly favor CRNA-heavy staffing models — particularly in ambulatory settings where case complexity is lower. UnitedHealthcare's 2025 policy change reducing CRNA reimbursement rates reflects the commercial payer pushback, while the state-level opt-out trend reflects the opposing market force: demand for cost-effective anesthesia access, especially in rural areas where anesthesiologists are scarce.</P>
