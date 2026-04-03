@@ -167,9 +167,88 @@ function HowHospitalsGetPaid() {
       ]} />
       <SH>The Chargemaster: America's Most Absurd Document</SH>
       <TB>
-        <P>Every US hospital maintains a "chargemaster" — a list of prices for every item and service, from an aspirin tablet ($25–$50) to a day in the ICU ($10,000–$25,000+). These prices bear almost no relationship to actual costs. No insurer pays chargemaster rates. Medicare ignores them entirely.</P>
+        <P>Every US hospital maintains a "chargemaster" — a list of prices for every item and service, from an aspirin tablet to a day in the ICU. These prices bear almost no relationship to actual costs. No insurer pays chargemaster rates. Medicare ignores them entirely.</P>
         <P>The only people who see chargemaster prices are the uninsured — the population least able to pay. Federal price transparency rules now require hospitals to publish negotiated rates, but compliance has been uneven.</P>
         <P>For a UK-trained clinician, this is perhaps the most alien feature. In the NHS, there are national tariffs set by NHS England. You don't negotiate what a hip replacement costs. There's a published price. Everyone pays it.</P>
+      </TB>
+
+      <SH>Real Chargemaster Prices: UC Davis Health</SH>
+      <Sub>Actual published charges from the UC Davis CDM (June 2025) — what's listed vs what you'd pay elsewhere</Sub>
+
+      <div style={{ overflowX: "auto" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.85rem", minWidth: 550 }}>
+          <thead><tr>
+            <th style={{ textAlign: "left", fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: 1.5, color: "#64748b", fontWeight: 600, padding: "11px 12px", borderBottom: "1px solid rgba(148,163,184,0.25)" }}>Item</th>
+            <th style={{ textAlign: "right", fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: 1.5, color: "#64748b", fontWeight: 600, padding: "11px 12px", borderBottom: "1px solid rgba(148,163,184,0.25)" }}>Chargemaster Price</th>
+            <th style={{ textAlign: "right", fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: 1.5, color: "#64748b", fontWeight: 600, padding: "11px 12px", borderBottom: "1px solid rgba(148,163,184,0.25)" }}>Pharmacy / Real Cost</th>
+            <th style={{ textAlign: "right", fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: 1.5, color: "#f87171", fontWeight: 600, padding: "11px 12px", borderBottom: "1px solid rgba(148,163,184,0.25)" }}>Markup</th>
+          </tr></thead>
+          <tbody>
+            {[
+              { item: "Aspirin 325mg tablet", charge: "$1.00", real: "$0.02", markup: "50×", cat: "💊 Drugs You Recognise" },
+              { item: "Ibuprofen 600mg tablet", charge: "$16.22", real: "$0.10", markup: "162×" },
+              { item: "Acetaminophen 325mg", charge: "$1.00", real: "$0.03", markup: "33×" },
+              { item: "Ondansetron 4mg IV (Zofran)", charge: "$22.71", real: "$0.50", markup: "45×" },
+              { item: "Ketorolac 30mg IV (Toradol)", charge: "$52.90", real: "$1.50", markup: "35×" },
+              { item: "Dexamethasone 4mg tablet", charge: "$16.22", real: "$0.15", markup: "108×" },
+              { item: "sep", cat: "🏥 Anesthesia Drugs" },
+              { item: "Propofol 1000mg (100mL)", charge: "$666–1,013", real: "$8–15", markup: "~70×" },
+              { item: "Fentanyl patch 12mcg/hr", charge: "$68.13", real: "$3–8", markup: "~12×" },
+              { item: "Midazolam 5mg IV", charge: "$44.89", real: "$1.50", markup: "30×" },
+              { item: "Rocuronium 50mg", charge: "$124–553", real: "$6–12", markup: "~30×" },
+              { item: "Succinylcholine 200mg", charge: "$83.86", real: "$5–10", markup: "~12×" },
+              { item: "Sugammadex 200mg", charge: "$1,454", real: "$40–80", markup: "~25×" },
+              { item: "Neostigmine 3mg", charge: "$1,051", real: "$3–5", markup: "~280×" },
+              { item: "Bupivacaine 0.5% PF 30mL", charge: "$22.71", real: "$3–5", markup: "~6×" },
+              { item: "Ketamine 500mg (5mL)", charge: "$430", real: "$8–15", markup: "~40×" },
+              { item: "Lidocaine 2% 100mL", charge: "$28.53", real: "$2–4", markup: "~10×" },
+              { item: "sep", cat: "🔬 Labs & Imaging" },
+              { item: "CBC (complete blood count)", charge: "$226–237", real: "$10–15 (Quest)", markup: "~18×" },
+              { item: "Basic metabolic panel", charge: "$391.50", real: "$15–25 (Quest)", markup: "~20×" },
+              { item: "Comprehensive metabolic panel", charge: "$1,115", real: "$20–35 (Quest)", markup: "~40×" },
+              { item: "Troponin (quantitative)", charge: "$268.50", real: "$15–30", markup: "~12×" },
+              { item: "Chest X-ray (2 views)", charge: "$1,049", real: "$40–75 (imaging center)", markup: "~18×" },
+              { item: "CT head without contrast", charge: "$4,543", real: "$200–400 (imaging center)", markup: "~15×" },
+              { item: "CT chest without contrast", charge: "$4,871", real: "$200–400", markup: "~16×" },
+              { item: "sep", cat: "🛏️ Room & Board (per day)" },
+              { item: "General medical/surgical bed", charge: "$7,287", real: "—", markup: "" },
+              { item: "Bed with telemetry", charge: "$8,073", real: "—", markup: "" },
+              { item: "Special care unit", charge: "$10,776", real: "—", markup: "" },
+              { item: "Surgical ICU", charge: "$21,747", real: "—", markup: "" },
+              { item: "Medical ICU", charge: "$21,747", real: "—", markup: "" },
+              { item: "Pediatric ICU", charge: "$21,747", real: "—", markup: "" },
+              { item: "sep", cat: "⏱️ Recovery Room (PACU)" },
+              { item: "Class I (stable) — first hour", charge: "$4,010", real: "—", markup: "" },
+              { item: "Class II (basic) — first hour", charge: "$4,587", real: "—", markup: "" },
+              { item: "Class III (extended) — first hour", charge: "$4,980", real: "—", markup: "" },
+              { item: "Each additional 30 min", charge: "$1,415–1,503", real: "—", markup: "" },
+              { item: "sep", cat: "💉 IV Fluids & Blood" },
+              { item: "Normal saline 1000mL", charge: "$26.78", real: "$1–3", markup: "~12×" },
+              { item: "Lactated Ringer's 1000mL", charge: "$167.63", real: "$2–4", markup: "~55×" },
+              { item: "Heparin 5,000 units", charge: "$121.57", real: "$3–5", markup: "~30×" },
+              { item: "Enoxaparin 40mg (Lovenox)", charge: "$913.43", real: "$20–40", markup: "~30×" },
+              { item: "Insulin 100 units/mL vial", charge: "$1,011–1,448", real: "$25–100 (retail)", markup: "~15×" },
+            ].map((row, i) => {
+              if (row.item === "sep") return (
+                <tr key={i}><td colSpan={4} style={{ padding: "16px 12px 8px", color: "#f1f5f9", fontWeight: 700, fontSize: "0.88rem", borderBottom: "none" }}>{row.cat}</td></tr>
+              );
+              return (
+                <tr key={i}>
+                  <td style={{ padding: "9px 12px", borderBottom: "1px solid rgba(148,163,184,0.1)", color: "#f1f5f9", fontWeight: 400, fontSize: "0.84rem" }}>{row.item}</td>
+                  <td style={{ padding: "9px 12px", borderBottom: "1px solid rgba(148,163,184,0.1)", color: "#fbbf24", fontWeight: 600, textAlign: "right", fontSize: "0.84rem" }}>{row.charge}</td>
+                  <td style={{ padding: "9px 12px", borderBottom: "1px solid rgba(148,163,184,0.1)", color: "#4ade80", textAlign: "right", fontSize: "0.84rem" }}>{row.real}</td>
+                  <td style={{ padding: "9px 12px", borderBottom: "1px solid rgba(148,163,184,0.1)", color: row.markup ? "#f87171" : "#64748b", fontWeight: row.markup ? 700 : 400, textAlign: "right", fontSize: "0.84rem" }}>{row.markup || "—"}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      <Callout type="red"><BR>Nobody pays these prices</BR> — except the uninsured. Medicare pays a flat DRG rate regardless of itemised charges. Private insurers negotiate 40–60% discounts off chargemaster, or set their own rates entirely. Medicaid pays even less. The chargemaster exists primarily as a starting point for negotiation and as the default bill for anyone without an insurer to negotiate on their behalf. A bag of Lactated Ringer's that costs the hospital ~$2 is listed at $167.63. Neostigmine that costs ~$3 wholesale is listed at $1,051. These aren't errors — they're the structural reality of a system where list prices are fictional and actual prices are negotiated behind closed doors.</Callout>
+
+      <TB>
+        <P style={{ fontSize: "0.82rem", color: "#64748b", fontStyle: "italic" }}>Data source: UC Davis Health Charge Description Master (CDM), published June 2025. "Pharmacy / Real Cost" column reflects approximate wholesale acquisition cost (WAC) or cash-pay pricing at retail pharmacies and independent imaging centers for comparison. Chargemaster prices are required to be published under CMS price transparency rules (45 CFR §180.50). These are standard academic medical center charges and are comparable to other US teaching hospitals.</P>
       </TB>
       <SH>Where $5.3 Trillion Goes</SH>
       <Sub>Spending by category of service (2024, billions)</Sub>
@@ -846,6 +925,7 @@ export default function App() {
 
   return (
     <div style={{ minHeight: "100vh", background: "#0f172a", color: "#f1f5f9", fontFamily: "'Source Sans 3',-apple-system,sans-serif" }}>
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       {/* Nav */}
       <nav style={{ position: "sticky", top: 0, zIndex: 100, background: "rgba(15,23,42,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(148,163,184,0.15)", padding: "0 22px", display: "flex", alignItems: "center", height: 54 }}>
         <span onClick={() => setTab(null)} style={{ fontFamily: "'Playfair Display',Georgia,serif", fontWeight: 800, fontSize: "1.1rem", color: "#fbbf24", cursor: "pointer" }}>US Healthcare</span>
